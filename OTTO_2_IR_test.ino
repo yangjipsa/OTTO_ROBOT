@@ -10,15 +10,14 @@ void setup()
 
 void loop()
 {
-  int decodeVal = IrReceiver.decode();
-  delay(200);
- 
-  if (decodeVal) 
+  if (IrReceiver.decode()) 
   {
-    IrReceiver.resume();
+    delay(200);
     unsigned char cmd = IrReceiver.decodedIRData.command;
     Serial.print("Received Code : 0x");
     Serial.println(cmd,HEX);
+
+    IrReceiver.resume();
   }
-  
 }
+
